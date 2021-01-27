@@ -12,3 +12,5 @@ export interface ICartItem {
 export interface ICartState {
   items: ICartItem[];
 }
+
+export const ADD_PRODUCT_TO_CART = 'ADD_PRODUCT_TO_CART';
