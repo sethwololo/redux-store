@@ -1,16 +1,33 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import api from '../services/api';
+
+import { IProduct } from '../store/modules/cart/types';
 
 const Catalog: React.FC = () => {
-  const catalog = useSelector(state => state);
+  const [catalog, setCatalog] = useState<IProduct[]>([]);
 
-  // eslint-disable-next-line no-console
-  console.log(catalog);
+  useEffect(() => {
+    const fetchData = async (): Promise<void> => {
+      const products = (await api.get('products')).data;
+
+      setCatalog(products);
+    };
+
+    fetchData();
+  }, []);
 
   return (
-    <>
+    <main>
       <h1>Catalog</h1>
-    </>
+
+      {catalog.map(product => (
+        <article key={product.id}>
+          <strong>{product.title}</strong> {' - '}
+          <span>{product.price}</span> {'  '}
+          <button type="button">Comprar</button>
+        </article>
+      ))}
+    </main>
   );
 };
 
