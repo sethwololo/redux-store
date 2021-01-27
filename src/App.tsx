@@ -7,11 +7,11 @@ import Catalog from './components/Catalog';
 
 const App: React.FC = () => {
   return (
-    <>
+    <React.StrictMode>
       <Provider store={store}>
         <Catalog />
       </Provider>
-    </>
+    </React.StrictMode>
   );
 };
 
