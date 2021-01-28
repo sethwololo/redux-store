@@ -27,6 +27,7 @@
       "prettier/prettier": "error",
       "react/jsx-one-expression-per-line": "off",
       "react/jsx-filename-extension": [ 1, { "extensions": [".tsx", ".ts", ".js", "tsx"] }],
+      "react/prop-types": "off",
       "import/prefer-default-export": "off",
       "no-use-before-define": "off",
       "@typescript-eslint/no-use-before-define": ["error"],
