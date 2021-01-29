@@ -1,10 +1,6 @@
 import { Reducer } from 'redux';
 import produce from 'immer';
-import {
-  ADD_PRODUCT_TO_CART_FAILIURE,
-  ADD_PRODUCT_TO_CART_SUCCESS,
-  ICartState,
-} from './types';
+import { ActionTypes, ICartState } from './types';
 
 const INITIAL_STATE: ICartState = {
   items: [],
@@ -15,7 +11,7 @@ const cart: Reducer<ICartState> = (state = INITIAL_STATE, action) => {
   // eslint-disable-next-line consistent-return
   return produce(state, draft => {
     switch (action.type) {
-      case ADD_PRODUCT_TO_CART_SUCCESS: {
+      case ActionTypes.addProductToCartSuccess: {
         const { product } = action.payload;
 
         const productInCartIndex = draft.items.findIndex(
@@ -34,7 +30,7 @@ const cart: Reducer<ICartState> = (state = INITIAL_STATE, action) => {
         break;
       }
 
-      case ADD_PRODUCT_TO_CART_FAILIURE: {
+      case ActionTypes.addProductToCartFailiure: {
         draft.failedStockCheck.push(action.payload.productId);
 
         break;
